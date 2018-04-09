@@ -16,10 +16,13 @@ var trivia = {
         options:["Basketball","Soccer","Golf","Tennis"],
         answer:"Soccer"}
 };
+var pastQuestions = [];
+
 var ans;
+var ranQuestion;
 var quesCounter = 0;
 var correct = 0;
-var timeoutID;
+// var timeoutID;
 var $answerText = '<p "class=answerText"></p>'
 var $contentDiv = '<div class="contentDiv">' + 
                      '<h3 class="timerText">Time Remaining <span class="countdown">0</span></h3>' + 
@@ -32,7 +35,7 @@ var $optionsList = '<ul class="optUl">' +
                         '<li class="option3"></li>'+ 
                         '<li class="option4"></li>'+ 
                     '</ul>'; 
-
+var $restartButton = '<button id="restart">Restart</button>'
 
 startGame();
 
@@ -40,26 +43,34 @@ function startGame(){
     $("#start").on("click",function () { 
         $(this).remove();
         $(".container").append( $contentDiv);
-        gameOn();
+        ChooseRandomQues();
     })
 }
 
-function gameOn(){
-    $(".contentDiv").append( $optionsList);
-    for (const key in trivia) {
-        if (trivia.hasOwnProperty(key)) {
-            const ques = (trivia[key].question);
-            const opt = trivia[key].options;
-            ans = trivia[key].answer;
-            $(".questionText").text(ques);
-            $(".option1").text(opt[0]);
-            $(".option2").text(opt[1]);
-            $(".option3").text(opt[2]);
-            $(".option4").text(opt[3]);
-            takeAnswer();
-        }
+function ChooseRandomQues() {
+    var keys = Object.keys(trivia);
+    ranQuestion = keys[Math.floor(Math.random() * keys.length)];
+    if (pastQuestions.indexOf(ranQuestion) === -1) {
+        pastQuestions.push(ranQuestion);
+        gameOn();
+    } else {
+        ChooseRandomQues();
     }
 }
+
+
+function gameOn(){
+    $(".contentDiv").append( $optionsList);
+        const ques = (trivia[ranQuestion].question);
+        const opt = trivia[ranQuestion].options;
+        ans = trivia[ranQuestion].answer;
+        $(".questionText").text(ques);
+        $(".option1").text(opt[0]);
+        $(".option2").text(opt[1]);
+        $(".option3").text(opt[2]);
+        $(".option4").text(opt[3]);
+        takeAnswer();
+        }
 
 function takeAnswer() {
     $("li").on("click", function () { 
@@ -67,17 +78,12 @@ function takeAnswer() {
         if($(this).text() == ans){
             $(".questionText").text("Correct!");
             correct+= 1;
-            // trackQuestions();
-            delayedAlert();
-            clearAlert();
+            trackQuestions();
         }else{
             $(".questionText").text("Wrong!");
-            $(".contentDiv").append($answerText);
-            $(".answerText").text("The correct answer was: " + ans);
-            // trackQuestions();
-            delayedAlert();
-            clearAlert(); 
-
+            // $(".contentDiv").append($answerText);
+            // $(".answerText").text("The correct answer was: " + ans);
+            trackQuestions();
         }   
     })
 }
@@ -85,10 +91,23 @@ function takeAnswer() {
 function trackQuestions(){
     quesCounter += 1;
     if(quesCounter === Object.keys(trivia).length){
-        console.log(correct);
-        console.log(quesCounter);
-        alert("Done!");
-
+        setInterval(ChooseRandomQues,5000) 
+        $(".questionText").text("You got "+ correct + " correct!");
+        setInterval(ChooseRandomQues,5000)
+        reset();
+    }else{
+        setInterval(ChooseRandomQues,5000) 
     }
+}
+
+function reset(){
+  $(".contentDiv").remove();
+  $(".container").append($restartButton);
+  $("#restart").on("click",function(){
+  $(this).remove();
+    pastQuestions = []; 
+    $(".container").append( $contentDiv);
+    ChooseRandomQues();  
+  })
 }
 
