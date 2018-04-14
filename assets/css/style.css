@@ -1,127 +1,138 @@
-body{
+body {
     font-size: 16px;
     background-color: #031421;
 }
 
-.contentDiv{
+.contentDiv {
     width: 100%;
-    color:#1391e3;
+    color: #1391e3;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-shadow:0px 1px #000b13;  
+    text-shadow: 0px 1px #000b13;
 }
 
-header{
-    background-color:#1391e3;
-    color:rgb(253, 252, 251);
-    border-top-right-radius: 17px;
-    border-top-left-radius: 17px;
+header {
+    background-color: #1391e3;
+    color: rgb(253, 252, 251);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
     margin-bottom: 20px;
     border-bottom-style: groove;
-    border-bottom: 3px solid rgb(1, 2, 56); 
+    border-bottom: 3px solid rgb(1, 2, 56);
 }
 
-h1{
-    font-size: 300%;
-    margin:0;
-    padding:20px 0;
+h1 {
+    font-size: 200%;
+    margin: 0;
+    padding: 20px 0;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    text-shadow:0px 3px #031421;
+    letter-spacing: 0.3rem;
+    text-shadow: 0px 3px hsl(109, 97%, 14%);
 }
 
-span{
+.mn:hover {
+    color: rgb(248, 12, 12);
+}
+
+.mn {
     font-size: 125%;
 }
 
-.questionText{
+.questionText {
     font-size: 125%;
     font-weight: bold;
+    margin: 10px 0px 15px 0px;
 }
-.container{
+
+.container {
     margin: 40px auto;
     background: #e5f3fd;
     text-align: center;
     width: 960px;
     border-radius: 20px;
-    height:600px;
-    border:4px solid #1391e3; 
+    height: 600px;
+    border: 4px solid #1391e3;
 }
 
-button{
+button {
     width: 25%;
     height: 50px;
     background-color: #1391e3;
-    color:rgb(253, 252, 251);
+    color: rgb(253, 252, 251);
     border-radius: 50px;
     font-size: 200%;
-    font-family: Georgia, serif; 
+    font-family: Georgia, serif;
     margin-top: 20%;
     letter-spacing: 0.2rem;
     font-weight: bold;
     outline: none;
     transition: all 0.3s;
-    border:0;
+    border: 0;
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
 }
 
-#restart{
+#restart {
     margin-top: 1%;
 }
 
-button:hover{
+button:hover {
     background-color: rgb(6, 100, 163);
     box-shadow: rgb(0, 0, 0) 5px 5px 10px 5px;
-    color:  #ffffff;
+    color: #ffffff;
     border: 20px soild #1391e3;
-    transition: all 0.2s;  
+    transition: all 0.2s;
     width: 27%;
     height: 54px;
 }
 
-
-ul{
+ul {
     list-style: none;
     padding: 0 30%;
-    margin-bottom: 20px;
+    margin: 40px 0;
     transition: all 3s;
 }
 
-.option{
+.results{
+    margin: 10px 0;
+}
+
+.option {
     font-size: 125%;
     border-radius: 50px;
-    margin:10px 0; 
+    margin: 10px 0;
     padding: 10px;
     transition: all 0.2s;
-    text-shadow:0px 1px #031421;
-    -webkit-box-shadow: 0px 3px 15px 4px #000000; 
+    text-shadow: 0px 1px #031421;
+    -webkit-box-shadow: 0px 3px 15px 4px #000000;
     box-shadow: 0px 3px 15px 4px #000000;
 }
 
-.option:hover{
+.option:hover {
     background-color: #1391e3;
-    color:rgb(253, 252, 251);
+    color: rgb(253, 252, 251);
     border: 2px solid rgb(7, 91, 146);
 }
 
-.countdown{
+.countdown {
     font-weight: bold;
     color: red;
 }
 
-.image{
-    height:300px;
+.image {
+    height: 300px;
     width: 50%;
     border-radius: 15px;
-    transition:all 2s;
+    transition: all 2s;
     border: 3px solid #1391e3;
-    -webkit-box-shadow: 0px 3px 15px 4px #000000; 
+    -webkit-box-shadow: 0px 3px 15px 4px #000000;
     box-shadow: 0px 3px 15px 4px #000000;
 }
 
-.image:hover{
-    height:305px;
+.image:hover {
+    height: 301px;
     width: 51%;
 }
 
-
-
+.loading {
+    width: 5%;
+    margin-top: 10px;
+}

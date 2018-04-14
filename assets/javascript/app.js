@@ -6,9 +6,9 @@ var unanswered = 0;
 var countdown;
 var counter;
 
-//***************************************************************/
+//===============================================================/
 //             Dynamic page contents to be loaded
-//************************************************************* */
+//===============================================================/
 var $answerText = '<p "class=answerText"></p>';
 var $contentDiv = '<div class="contentDiv">' + 
                      '<span class="timerText">Time Remaining: </span><span class="countdown">0</span><span class="second"> seconds</span>' + 
@@ -22,16 +22,18 @@ var $optionsList = '<ul>' +
                         '<li class="option4 option"></li>'+ 
                     '</ul>';
 var $results = '<ul>' +
-                   '<li class="correct"></li>'+ 
-                   '<li class="wrong"></li>'+ 
-                   '<li class="unanswered"></li>'+ 
+                   '<li class="results correct"></li>'+ 
+                   '<li class="results wrong"></li>'+ 
+                   '<li class="results unanswered"></li>'+ 
                 '</ul>';  
-var $image = '<img src="" class="image" alt="image">';
+var $image = '<img src="" class="image" alt="image">' + '<br>';
+var $loading = '<img src="assets/images/loading.gif" class="loading" alt="loading">';
+
 var $restartButton = '<button id="restart">Restart</button>';
 
-//***************************************************************/
+//===============================================================/
 //                     GAME FUNCTIONS
-//************************************************************* */
+//===============================================================/
 
 //this function listens for click even to start the game
     $("#start").on("click",function (){ 
@@ -42,6 +44,8 @@ var $restartButton = '<button id="restart">Restart</button>';
 
 //setup questions set from the array of objects
 function setUpQuestion(){
+    $("br").remove();
+    $(".loading").remove();
     $(".image").remove();   
     $(".contentDiv").append( $optionsList);
         $(".questionText").text(trivia[index].question);
@@ -81,7 +85,7 @@ function setUpQuestion(){
     function stopInterval(){clearInterval(countdown);}
 
 
-//Click event listens for user answer
+//listens for Click events for user answer
     $('.container').on("click", "li", function () {
         stopInterval();
         $("ul, li").remove();
@@ -98,7 +102,7 @@ function setUpQuestion(){
 
 //manages the images
     function imageMnager(){
-        $(".contentDiv").append($image);
+        $(".contentDiv").append($image).append($loading);
         $(".image").attr("src",trivia[index].image);
         $(".image").slideDown( 5000, function(){
         setTimeout(trackQuestions, 6000);    
