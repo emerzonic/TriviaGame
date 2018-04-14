@@ -77,7 +77,7 @@ function setUpQuestion(){
             $(".second").text(" second");
             $(".questionText").text("The correct answer was " + trivia[index].answer+ ".");
             stopInterval();
-            imageMnager();          
+            imageManager();          
         }
     }
 
@@ -92,16 +92,16 @@ function setUpQuestion(){
         if($(this).text() == trivia[index].answer){
             correct++;
             $(".questionText").text("Correct!");
-            imageMnager(); 
+            imageManager(); 
         }else{
             wrong++;
             $(".questionText").text("Wrong! The correct answer was: " + trivia[index].answer + ".");
-            imageMnager();
+            imageManager();
         }   
     });
 
 //manages the images
-    function imageMnager(){
+    function imageManager(){
         $(".contentDiv").append($image).append($loading);
         $(".image").attr("src",trivia[index].image);
         $(".image").slideDown( 5000, function(){
