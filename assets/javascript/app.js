@@ -73,8 +73,7 @@ function setUpQuestion(){
             $(".second").text(" second");
             $(".questionText").text("The correct answer was " + trivia[index].answer+ ".");
             stopInterval();
-            imageMnager();
-                      
+            imageMnager();          
         }
     }
 
