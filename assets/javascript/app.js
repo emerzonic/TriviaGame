@@ -57,7 +57,7 @@ function setUpQuestion(){
     }
     
 
-//tracks and update the counter
+//tracks and updates the counter
     function trackTimer(){
         counter--;
         $(".timerText").text("Time remaining: ");
@@ -82,7 +82,7 @@ function setUpQuestion(){
     function stopInterval(){clearInterval(countdown);}
 
 
-//Click even listens for user answer
+//Click event listens for user answer
     $('.container').on("click", "li", function () {
         stopInterval();
         $("ul, li").remove();
