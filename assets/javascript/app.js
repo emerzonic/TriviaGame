@@ -6,7 +6,6 @@ var unanswered = 0;
 var countdown;
 var counter;
 
-
 //***************************************************************/
 //             Dynamic page contents to be loaded
 //************************************************************* */
@@ -33,6 +32,7 @@ var $restartButton = '<button id="restart">Restart</button>';
 //***************************************************************/
 //                     GAME FUNCTIONS
 //************************************************************* */
+
 //this function listens for click even to start the game
     $("#start").on("click",function (){ 
         $(this).remove();
