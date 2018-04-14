@@ -16,7 +16,8 @@ header{
     border-top-right-radius: 17px;
     border-top-left-radius: 17px;
     margin-bottom: 20px;
-    border-bottom: 3px solid rgb(29, 4, 175); 
+    border-bottom-style: groove;
+    border-bottom: 3px solid rgb(1, 2, 56); 
 }
 
 h1{
@@ -43,11 +44,11 @@ span{
     width: 960px;
     border-radius: 20px;
     height:600px;
-    border:3px solid #1391e3; 
+    border:4px solid #1391e3; 
 }
 
 button{
-    width: 20%;
+    width: 25%;
     height: 50px;
     background-color: #1391e3;
     color:rgb(253, 252, 251);
@@ -68,10 +69,13 @@ button{
 }
 
 button:hover{
-    background-color: rgb(43, 6, 252);
+    background-color: rgb(6, 100, 163);
+    box-shadow: rgb(0, 0, 0) 5px 5px 10px 5px;
     color:  #ffffff;
     border: 20px soild #1391e3;
     transition: all 0.2s;  
+    width: 27%;
+    height: 54px;
 }
 
 
@@ -91,16 +95,12 @@ ul{
     text-shadow:0px 1px #031421;
     -webkit-box-shadow: 0px 3px 15px 4px #000000; 
     box-shadow: 0px 3px 15px 4px #000000;
-
 }
 
 .option:hover{
     background-color: #1391e3;
     color:rgb(253, 252, 251);
     border: 2px solid rgb(7, 91, 146);
-  
-   
-   
 }
 
 .countdown{
@@ -117,5 +117,11 @@ ul{
     -webkit-box-shadow: 0px 3px 15px 4px #000000; 
     box-shadow: 0px 3px 15px 4px #000000;
 }
+
+.image:hover{
+    height:305px;
+    width: 51%;
+}
+
 
 

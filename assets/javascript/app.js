@@ -71,7 +71,7 @@ function setUpQuestion(){
             $("ul, li").remove();
             $(".timerText").text("Your time is out! ");
             $(".second").text(" second");
-            $(".questionText").text("The correct answer was: " + trivia[index].answer+ ".");
+            $(".questionText").text("The correct answer was " + trivia[index].answer+ ".");
             stopInterval();
             imageMnager();
                       
