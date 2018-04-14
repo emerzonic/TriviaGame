@@ -102,8 +102,7 @@ function setUpQuestion(){
         $(".contentDiv").append($image);
         $(".image").attr("src",trivia[index].image);
         $(".image").slideDown( 5000, function(){
-            $( this ).css( "border", "px solid #1391e3" );
-            setTimeout(trackQuestions, 6000);    
+        setTimeout(trackQuestions, 6000);    
         });  
     }
 
