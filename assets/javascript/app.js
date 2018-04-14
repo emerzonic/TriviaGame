@@ -1,145 +1,137 @@
-var trivia = {
-    test1:{
-        question:"What is your name?",
-        options:["John","Paul","Joe","Ed"],
-        answer:"Ed"},
-    test2:{
-        question:"What is your age?",
-        options:[20,30,40,50],
-        answer:30},
-    test3:{
-        question:"What is your color?",
-        options:["Red","Blue","Green","Yellow"],
-        answer:"Green"},
-    test4:{
-        question:"What is your sport?",
-        options:["Basketball","Soccer","Golf","Tennis"],
-        answer:"Soccer"}
-};
-var pastQuestions = [];
-
-var ans;
-var ranQuestion;
 var quesCounter = 0;
 var correct = 0;
-var timeoutID;
+var wrong = 0;
+var index = 0;
+var unanswered = 0;
+var countdown;
 var counter;
+
+
+//***************************************************************/
+//             Dynamic page contents to be loaded
+//************************************************************* */
 var $answerText = '<p "class=answerText"></p>';
 var $contentDiv = '<div class="contentDiv">' + 
-                     '<h3 class="timerText">Time Remaining <span class="countdown">0</span></h3>' + 
+                     '<span class="timerText">Time Remaining: </span><span class="countdown">0</span><span class="second"> seconds</span>' + 
                      '<p class="questionText"></p>' +
                   '</div>';
 
-var $optionsList = '<ul class="optUl">' +
+var $optionsList = '<ul>' +
                         '<li class="option1 option"></li>'+ 
                         '<li class="option2 option"></li>'+ 
                         '<li class="option3 option"></li>'+ 
                         '<li class="option4 option"></li>'+ 
-                    '</ul>'; 
+                    '</ul>';
+var $results = '<ul>' +
+                   '<li class="correct"></li>'+ 
+                   '<li class="wrong"></li>'+ 
+                   '<li class="unanswered"></li>'+ 
+                '</ul>';  
+var $image = '<img src="" class="image" alt="image">';
 var $restartButton = '<button id="restart">Restart</button>';
 
-// startGame();
-
-
-// function startGame(){
-    $("#start").on("click",function () { 
+//***************************************************************/
+//                     GAME FUNCTIONS
+//************************************************************* */
+//this function listens for click even to start the game
+    $("#start").on("click",function (){ 
         $(this).remove();
         $(".container").append( $contentDiv);
-        ChooseRandomQues();
+        setUpQuestion();
     });
-// }
 
-function ChooseRandomQues() {
-    var keys = Object.keys(trivia);
-    ranQuestion = keys[Math.floor(Math.random() * keys.length)];
-    gameOn();
-    // ChooseRandomQues();
-    // if (pastQuestions.indexOf(ranQuestion) === -1) {
-    //     pastQuestions.push(ranQuestion);
-    //     gameOn();
-    // } else {
-    //     ChooseRandomQues();
-    // }
-}
-
-
-function gameOn(){
+//setup questions set from the array of objects
+function setUpQuestion(){
+    $(".image").remove();   
     $(".contentDiv").append( $optionsList);
-        var ques = (trivia[ranQuestion].question);
-        var opt = trivia[ranQuestion].options;
-        ans = trivia[ranQuestion].answer;
-        $(".questionText").text(ques);
-        $(".option1").text(opt[0]);
-        $(".option2").text(opt[1]);
-        $(".option3").text(opt[2]);
-        $(".option4").text(opt[3]);
-        counter = 10;
-        timingIt();
-        // takeAnswer();
+        $(".questionText").text(trivia[index].question);
+        $(".option1").text(trivia[index].options[0]);
+        $(".option2").text(trivia[index].options[1]);
+        $(".option3").text(trivia[index].options[2]);
+        $(".option4").text(trivia[index].options[3]);
+        $(".timerText").text("Time remaining: ");
+        $(".second").text(" seconds");
+        counter = 30;
+        $(".countdown").text(counter);
+        countdown = setInterval(trackTimer,1000);
+    }
+    
+
+//tracks and update the counter
+    function trackTimer(){
+        counter--;
+        $(".timerText").text("Time remaining: ");
+        if(counter < 10){
+            counter = "0" + counter;
+        } 
+        $(".countdown").text(counter);
+        $(".second").text(" seconds");
+        if (counter == "0"+ 0) {
+            unanswered++;
+            $("ul, li").remove();
+            $(".timerText").text("Your time is out! ");
+            $(".second").text(" second");
+            $(".questionText").text("The correct answer was: " + trivia[index].answer+ ".");
+            stopInterval();
+            imageMnager();
+                      
+        }
     }
 
+//clears the timeInterval betwwen questions
+    function stopInterval(){clearInterval(countdown);}
 
-        
+
+//Click even listens for user answer
     $('.container').on("click", "li", function () {
-        clearIt ();
+        stopInterval();
         $("ul, li").remove();
-        if($(this).text() == ans){
+        if($(this).text() == trivia[index].answer){
+            correct++;
             $(".questionText").text("Correct!");
-            waitForFewSec ();
-            // trackQuestions(); 
+            imageMnager(); 
         }else{
-            $(".questionText").text("Wrong! The correct answer was " + ans);
-            waitForFewSec ();
-            // trackQuestions();
+            wrong++;
+            $(".questionText").text("Wrong! The correct answer was: " + trivia[index].answer + ".");
+            imageMnager();
         }   
     });
 
+//manages the images
+    function imageMnager(){
+        $(".contentDiv").append($image);
+        $(".image").attr("src",trivia[index].image);
+        $(".image").slideDown( 5000, function(){
+            $( this ).css( "border", "px solid #1391e3" );
+            setTimeout(trackQuestions, 6000);    
+        });  
+    }
 
-
-
+//tracks and update questions status
 function trackQuestions(){
     quesCounter += 1;
-    if(quesCounter === Object.keys(trivia).length){
-        $(".questionText").text("You got "+ correct + " correct!");
-        // reset();
+    if(quesCounter === trivia.length){
+        $(".image").remove();
+        $(".contentDiv").append( $results); 
+        $(".questionText").text("The end, here is your result:");
+        $(".correct").text("Correct Answers: " + correct);
+        $(".wrong").text("Incorrect Answers: " + wrong);
+        $(".unanswered").text("Unanswered: " + unanswered);
+        $(".contentDiv").append($restartButton);
     }else{
-         waitForFewSec ();      
+        index++;
+        setUpQuestion();    
     }
 }
 
-
-function timingIt () {
-	coundown = setInterval(trackTimer,1000);
-}
-
-function waitForFewSec () {
-	setInterval(ChooseRandomQues ,5000);
-}
-
-function trackTimer(){
-    counter--;
-    $(".countdown").text(counter);
-	if (counter === 0) {
-        $("ul, li").remove();
-        $(".timerText").text("Your time is out!");
-        $(".questionText").text("The correct answer was " + ans);
-        clearIt ();        
-	}
-}
-
-function clearIt () {
-clearInterval(coundown);
-}
-
-
-function reset(){
-    $(".contentDiv").remove();
-    $(".container").append($restartButton);
-    $("#restart").on("click",function(){
+//Reset the game
+$(".container").on("click", "button",function(){
     $(this).remove();
-      pastQuestions = []; 
-      $(".container").append( $contentDiv);
-      ChooseRandomQues();  
+    $("ul, li").remove();
+    correct = 0;
+    quesCounter = 0;
+    index = 0; 
+    setUpQuestion(); 
     });
-  }
+
 

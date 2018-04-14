@@ -6,7 +6,8 @@ body{
 .contentDiv{
     width: 100%;
     color:#1391e3;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow:0px 1px #000b13;  
 }
 
 header{
@@ -14,6 +15,8 @@ header{
     color:rgb(253, 252, 251);
     border-top-right-radius: 17px;
     border-top-left-radius: 17px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid rgb(29, 4, 175); 
 }
 
 h1{
@@ -22,18 +25,19 @@ h1{
     padding:20px 0;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+    text-shadow:0px 3px #031421;
 }
 
-h3{
-    font-size: 200%;
+span{
+    font-size: 125%;
 }
 
-p{
-    font-size: 150%;
+.questionText{
+    font-size: 125%;
     font-weight: bold;
 }
 .container{
-    margin: 20px auto;
+    margin: 40px auto;
     background: #e5f3fd;
     text-align: center;
     width: 960px;
@@ -49,35 +53,69 @@ button{
     color:rgb(253, 252, 251);
     border-radius: 50px;
     font-size: 200%;
+    font-family: Georgia, serif; 
     margin-top: 20%;
     letter-spacing: 0.2rem;
     font-weight: bold;
     outline: none;
+    transition: all 0.3s;
+    border:0;
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+}
+
+#restart{
+    margin-top: 1%;
 }
 
 button:hover{
-    background-color: rgb(253, 252, 251);
-    color:  #1391e3;
+    background-color: rgb(43, 6, 252);
+    color:  #ffffff;
     border: 20px soild #1391e3;
+    transition: all 0.2s;  
 }
 
 
 ul{
     list-style: none;
-    padding: 0 40%;
+    padding: 0 30%;
     margin-bottom: 20px;
+    transition: all 3s;
 }
 
-li{
+.option{
     font-size: 125%;
     border-radius: 50px;
     margin:10px 0; 
-    padding: 10px 0;
+    padding: 10px;
+    transition: all 0.2s;
+    text-shadow:0px 1px #031421;
+    -webkit-box-shadow: 0px 3px 15px 4px #000000; 
+    box-shadow: 0px 3px 15px 4px #000000;
+
 }
 
-li:hover{
+.option:hover{
     background-color: #1391e3;
     color:rgb(253, 252, 251);
-    font-weight: bold;
-    font-size:130%; 
+    border: 2px solid rgb(7, 91, 146);
+  
+   
+   
 }
+
+.countdown{
+    font-weight: bold;
+    color: red;
+}
+
+.image{
+    height:300px;
+    width: 50%;
+    border-radius: 15px;
+    transition:all 2s;
+    border: 3px solid #1391e3;
+    -webkit-box-shadow: 0px 3px 15px 4px #000000; 
+    box-shadow: 0px 3px 15px 4px #000000;
+}
+
+
