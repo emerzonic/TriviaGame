@@ -27,8 +27,8 @@ var $results = '<ul>' +
                    '<li class="results unanswered"></li>'+ 
                 '</ul>';  
 var $image = '<img src="" class="image" alt="image">' + '<br>';
-var $loading = '<img src="assets/images/loading.gif" class="loading" alt="loading">';
-
+var $loading = '<img src="assets/images/loading.gif" class="loading" alt="loading">' + '<br>';
+var $next = '<p class="next">Loading next question...</p>';
 var $restartButton = '<button id="restart">Restart</button>';
 
 //===============================================================/
@@ -45,26 +45,27 @@ var $restartButton = '<button id="restart">Restart</button>';
 //setup questions set from the array of objects
 function setUpQuestion(){
     $("br").remove();
+    $(".next").remove();
     $(".loading").remove();
-    $(".image").remove();   
+    $(".image").remove(); 
     $(".contentDiv").append( $optionsList);
         $(".questionText").text(trivia[index].question);
         $(".option1").text(trivia[index].options[0]);
         $(".option2").text(trivia[index].options[1]);
         $(".option3").text(trivia[index].options[2]);
         $(".option4").text(trivia[index].options[3]);
-        $(".timerText").text("Time remaining: ");
+        $(".timerText").text("Time Remaining: ");
         $(".second").text(" seconds");
         counter = 30;
         $(".countdown").text(counter);
         countdown = setInterval(trackTimer,1000);
-    }
+}
     
 
 //tracks and updates the counter
     function trackTimer(){
         counter--;
-        $(".timerText").text("Time remaining: ");
+        $(".timerText").text("Time Remaining: ");
         if(counter < 10){
             counter = "0" + counter;
         } 
@@ -102,11 +103,11 @@ function setUpQuestion(){
 
 //manages the images
     function imageManager(){
-        $(".contentDiv").append($image).append($loading);
+        $(".contentDiv").append($image).append($loading).append($next);
         $(".image").attr("src",trivia[index].image);
-        $(".image").slideDown( 5000, function(){
-        setTimeout(trackQuestions, 6000);    
-        });  
+        $(".image").fadeIn( 5000, function(){
+            setTimeout(trackQuestions, 6000); 
+        }); 
     }
 
 //tracks and update questions status
