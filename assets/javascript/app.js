@@ -21,11 +21,13 @@ var $optionsList = '<ul>' +
                         '<li class="option3 option"></li>'+ 
                         '<li class="option4 option"></li>'+ 
                     '</ul>';
+
 var $results = '<ul>' +
                    '<li class="results correct"></li>'+ 
                    '<li class="results wrong"></li>'+ 
                    '<li class="results unanswered"></li>'+ 
-                '</ul>';  
+                '</ul>';
+                  
 var $image = '<img src="" class="image" alt="image">' + '<br>';
 var $loading = '<img src="assets/images/loading.gif" class="loading" alt="loading">' + '<br>';
 var $next = '<p class="next">Loading next question...</p>';
@@ -115,6 +117,7 @@ function trackQuestions(){
     quesCounter += 1;
     if(quesCounter === trivia.length){
         $(".image").remove();
+        $(".next").remove();
         $(".contentDiv").append( $results); 
         $(".questionText").text("The end, here is your result:");
         $(".correct").text("Correct Answers: " + correct);
