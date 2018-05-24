@@ -1,5 +1,4 @@
-#Welcome to the Trivia Game 
-Welcome to the Trivia Game.
+#Welcome to the Trivia Game. 
 
 How well do you know the State of Minnesota?
 This game will test your knowledge of Minnesota with fifteen (15) multiple choice questions.
