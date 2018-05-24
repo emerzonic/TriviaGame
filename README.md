@@ -1,5 +1,5 @@
 #Welcome to the Trivia Game
-How well do you know the State of Minnesota?
+*How well do you know the State of Minnesota?
 This game will test your knowledge of Minnesota with fifteen (15) multiple choice questions.
 Each question has four choices to choose from. 
 You have 30 seconds to answer a question.
