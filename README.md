@@ -6,3 +6,6 @@
 * You have 30 seconds to answer a question.
 * Each time you pick an option, if correct, a dynamic message will display along with an image of the answer. If wrong, the correct answer will display along with it's image. If you run out of time, the correct answer will also display along with it's image. 
 * At the end of the game, your result will be provided and you will be given the change to play again.
+
+ [Click link to play!]( https://emerzonic.github.io/TriviaGame/)
+
