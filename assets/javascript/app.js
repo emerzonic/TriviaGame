@@ -108,7 +108,7 @@ function setUpQuestion(){
         $(".contentDiv").append($image).append($loading).append($next);
         $(".image").attr("src",trivia[index].image);
         $(".image").fadeIn( 5000, function(){
-            setTimeout(trackQuestions, 6000); 
+            setTimeout(trackQuestions, 5000); 
         }); 
     }
 
