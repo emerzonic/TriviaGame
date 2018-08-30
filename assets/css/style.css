@@ -4,7 +4,7 @@ body {
 }
 
 .contentDiv {
-    width: 100%;
+    /* width: 100%; */
     color: #1391e3;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-shadow: 0px 1px #000b13;
@@ -40,28 +40,31 @@ h1 {
 .questionText {
     font-size: 125%;
     font-weight: bold;
-    margin: 10px 0px 15px 0px;
+    margin: 1%;
 }
 
 .container {
-    margin: 40px auto;
+    margin-top: 40px;
+}
+
+.main-content{
     background: #e5f3fd;
     text-align: center;
-    width: 960px;
+    /* width: 960px; */
     border-radius: 20px;
-    height: 600px;
+    height: auto;
     border: 4px solid #1391e3;
 }
 
 button {
-    width: 25%;
+    width: 18rem;
     height: 50px;
     background-color: #1391e3;
     color: rgb(253, 252, 251);
     border-radius: 50px;
     font-size: 200%;
     font-family: Georgia, serif;
-    margin-top: 20%;
+    margin: 20% 0;
     letter-spacing: 0.2rem;
     font-weight: bold;
     outline: none;
@@ -80,13 +83,14 @@ button:hover {
     color: #ffffff;
     border: 20px soild #1391e3;
     transition: all 0.2s;
-    width: 27%;
+    /* width: 27%; */
     height: 54px;
 }
 
 ul {
+    /* width:22rem; */
     list-style: none;
-    padding: 0 30%;
+    padding: 0 1%;
     margin: 40px 0;
     transition: all 3s;
 }
@@ -118,18 +122,13 @@ ul {
 }
 
 .image {
-    height: 300px;
-    width: 50%;
+    height: auto;
+    width: 100%;
     border-radius: 15px;
     transition: all 2s;
     border: 3px solid #1391e3;
     -webkit-box-shadow: 0px 3px 15px 4px #000000;
     box-shadow: 0px 3px 15px 4px #000000;
-}
-
-.image:hover {
-    height: 301px;
-    width: 51%;
 }
 
 .loading {
